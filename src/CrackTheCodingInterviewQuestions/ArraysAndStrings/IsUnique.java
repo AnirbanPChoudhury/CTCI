@@ -20,6 +20,7 @@ public class IsUnique {
         //Approach 2
         db("HASHMAP: ", isUniqueHash(str1));
         db("Sorting by ASCII: ", isUniqueSortByASCII(str1));
+        db("By Bit Vector: ", isUniqueBitVector("ahdkijhk"));
 
     }
 
@@ -46,6 +47,21 @@ public class IsUnique {
             if(arr[i - 1] == arr[i]) return false;
         }
 
+        return true;
+    }
+
+    static boolean isUniqueBitVector(String str) {
+        int check = 0;
+
+        for(int i = 0; i < str.length(); ++i) {
+            int idx = str.charAt(i);
+
+            int mask = 1 << idx;
+
+            if((check & mask) > 0) return false;
+
+            check |= mask;
+        }
         return true;
     }
 }
