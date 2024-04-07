@@ -15,7 +15,7 @@ public class RemoveDups {
         l.insertAtBeginning("D");
         l.insertAtBeginning("A");
         l.traverseList();
-        
+
         removeDupsWithHash(l);
         l.traverseList();
 
