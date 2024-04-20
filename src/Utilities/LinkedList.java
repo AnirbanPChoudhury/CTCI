@@ -60,11 +60,12 @@ public class LinkedList<T> {
 
     public void traverseList() {
         Node<T> itr = head;
-
+        db("\n", "");
         while(itr != null) {
             db(" -> ", itr.data);
             itr = itr.nextNode;
         }
+        db("\n", "");
     }
 
     public Node<T> getHead() {
