@@ -5,9 +5,11 @@ import static Helper.Helper.dbnl;
 
 public class LinkedList<T> {
     Node<T> head;
+    public int length = 0;
 
     public LinkedList(T data){
         Node<T> node = new Node<>(data);
+        ++length;
         this.head = node;
     }
 
@@ -15,6 +17,7 @@ public class LinkedList<T> {
         Node<T> node = new Node<>(data);
         node.nextNode = head;
         this.head = node;
+        ++length;
     }
 
     public void insertAtEnd(T data) {
@@ -27,6 +30,7 @@ public class LinkedList<T> {
 
         itr.nextNode = node;
         node.nextNode = null;
+        ++length;
     }
 
     public void removeNode(T data) {
@@ -39,11 +43,11 @@ public class LinkedList<T> {
             }
             itr = itr.nextNode;
         }
+        --length;
     }
 
     public void traverseList() {
         Node<T> itr = head;
-        dbnl("Head -> ", head.data);
 
         while(itr != null) {
             db(" -> ", itr.data);
