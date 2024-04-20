@@ -7,6 +7,10 @@ public class LinkedList<T> {
     Node<T> head;
     public int length = 0;
 
+    public LinkedList() {
+        head = null;
+    }
+
     public LinkedList(T data){
         Node<T> node = new Node<>(data);
         ++length;
@@ -15,21 +19,29 @@ public class LinkedList<T> {
 
     public void insertAtBeginning(T data) {
         Node<T> node = new Node<>(data);
-        node.nextNode = head;
-        this.head = node;
+        if(head == null) head = node;
+        else {
+            node.nextNode = head;
+            this.head = node;
+        }
         ++length;
     }
 
     public void insertAtEnd(T data) {
         Node<T> node = new Node<>(data);
-        Node<T> itr = head;
 
-        while(itr.nextNode != null) {
-            itr = itr.nextNode;
+        if(head == null) head = node;
+        else {
+            Node<T> itr = head;
+
+            while(itr.nextNode != null) {
+                itr = itr.nextNode;
+            }
+
+            itr.nextNode = node;
+            node.nextNode = null;
         }
 
-        itr.nextNode = node;
-        node.nextNode = null;
         ++length;
     }
 
