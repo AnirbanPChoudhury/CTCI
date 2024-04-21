@@ -27,10 +27,11 @@ public class Intersection {
         LinkedList<String> l2 = new LinkedList<>();
         l2.insertAtEnd(n5);
         l2.insertAtEnd(n6);
-        //l2.insertAtEnd(n3);
+        l2.insertAtEnd(n3);
         l2.traverseList();
 
         db("\nIntersection At: ", intersection(l1, l2));
+        db("\nIntersection Space 1 At: ", intersectionWithO1Space(l1, l2));
     }
 
     static String intersection(LinkedList<String> l1, LinkedList<String> l2) {
@@ -49,5 +50,24 @@ public class Intersection {
         }
 
         return "null";
+    }
+
+    static String intersectionWithO1Space(LinkedList<String> l1, LinkedList<String> l2) {
+
+        /** Runs indefinitely if no intersection (maybe), but java considers null == null,
+         * so if this is satisfied at some point then it breaks the loop
+         * but for our solution then it throws null pointer exception as we do not have the return value */
+
+        Node<String> itr1 = l1.getHead();
+        Node<String> itr2 = l2.getHead();
+
+        while(itr1 != itr2) {
+            if(itr1 == null) itr1 = l2.getHead();
+            if(itr2 == null) itr2 = l1.getHead();
+            itr1 = itr1.getNextNode();
+            itr2 = itr2.getNextNode();
+        }
+
+        return itr1.getData();
     }
 }
