@@ -64,7 +64,7 @@ public class LinkedList<T> {
             }
 
             itr.nextNode = node;
-            node.nextNode = null;
+            //node.nextNode = null;
         }
     }
 
