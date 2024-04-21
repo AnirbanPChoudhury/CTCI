@@ -27,6 +27,15 @@ public class LinkedList<T> {
         ++length;
     }
 
+    public void insertAtBeginning(Node<T> node) {
+        if(head == null) head = node;
+        else {
+            node.nextNode = head;
+            head = node;
+        }
+        ++length;
+    }
+
     public void insertAtEnd(T data) {
         Node<T> node = new Node<>(data);
 
@@ -43,6 +52,20 @@ public class LinkedList<T> {
         }
 
         ++length;
+    }
+
+    public void insertAtEnd(Node<T> node) {
+        if(head == null) head = node;
+        else {
+            Node<T> itr = head;
+
+            while(itr.nextNode != null) {
+                itr = itr.nextNode;
+            }
+
+            itr.nextNode = node;
+            node.nextNode = null;
+        }
     }
 
     public void removeNode(T data) {
