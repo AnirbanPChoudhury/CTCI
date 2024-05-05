@@ -18,7 +18,7 @@ public class Stack {
         minValueOfSubStack = Math.min(minValueOfSubStack, data);
     }
 
-    public void add(int data) {
+    public void push(int data) {
         elements.add(data);
         minValueOfSubStack = Math.min(minValueOfSubStack, data);
         top++;
@@ -33,6 +33,8 @@ public class Stack {
     }
 
     public int pop() {
-        return elements.get(top--);
+        int poppedValue = elements.get(top);
+        elements.remove(top--);
+        return poppedValue;
     }
 }

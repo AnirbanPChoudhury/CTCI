@@ -22,7 +22,7 @@ public class SetOfStacks {
         }
 
         if(setOfStacks.get(ptrToTop).elements.size() < threshold) {
-            setOfStacks.get(ptrToTop).add(el);
+            setOfStacks.get(ptrToTop).push(el);
         } else {
             setOfStacks.add(new Stack(el));
             ++ptrToTop;
