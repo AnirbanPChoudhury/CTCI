@@ -81,6 +81,14 @@ public class LinkedList<T> {
         --length;
     }
 
+    public T popHead() {
+        Node<T> ret = getHead();
+        head = head.getNextNode();
+        --length;
+
+        return ret.getData();
+    }
+
     public void traverseList() {
         Node<T> itr = head;
         db("\n", "");
