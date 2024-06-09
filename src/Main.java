@@ -1,39 +1,24 @@
+import Utilities.BinaryTree;
+import Utilities.BinaryTreePrinter;
+import Utilities.TNode;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws java.lang.Exception {
-        // your code goes here
-        Scanner sc = new Scanner(System.in);
+        BinaryTree<Integer> bt = new BinaryTree<>();
+        TNode<Integer> root = new TNode<>(20);
 
-        int n = sc.nextInt();
+        bt.addNode(root, new TNode<>(12));
+        bt.addNode(root, new TNode<>(11));
+        bt.addNode(root, new TNode<>(1));
+        bt.addNode(root, new TNode<>(234));
+        bt.addNode(root, new TNode<>(874));
+//        bt.addNode(root, new TNode<>(98));
+//        bt.addNode(root, new TNode<>(3982));
 
-        for (int i = 0; i < n; ++i) {
-
-            int input = sc.nextInt();
-
-            int num = Integer.parseInt(getNumberfromDigits(input));
-
-            System.out.println(requiredNum(num));
-        }
-    }
-
-    static int requiredNum(int num) {
-        for (int i = num; i < num * 10; ++i) {
-            if (i % 3 == 0 && i % 9 != 0 && i % 2 != 0) {
-                return i;
-            } else continue;
-        }
-        return 0;
-    }
-
-    static String getNumberfromDigits(int n) {
-
-        StringBuffer s = new StringBuffer("1");
-
-        for (int i = 1; i < n; ++i) {
-            s.append("0");
-        }
-
-        return s.toString();
+        BinaryTreePrinter<Integer> btp = new BinaryTreePrinter<>();
+        btp.printTree(root);
+        //bt.traverseInorder(root);
     }
 }
