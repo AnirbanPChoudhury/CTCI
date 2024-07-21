@@ -7,7 +7,7 @@ public class BinarySearchTrees<T extends Comparable<T>> {
         this.root = root;
     }
 
-    public void addNode(TNode<T> r, TNode<T> node) {
+    private void addNode(TNode<T> r, TNode<T> node) {
 
         if(root == null) {
             root = node;
@@ -23,6 +23,10 @@ public class BinarySearchTrees<T extends Comparable<T>> {
                 r.right = node;
             } else addNode(r.right, node);
         }
+    }
+
+    public void addNode(TNode<T> node) {
+        addNode(root, node);
     }
 
     public static void main(String[] args) {
