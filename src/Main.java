@@ -15,7 +15,7 @@ public class Main {
         n4.addAdjNodes(n3);
 
         g.addNodes(start, n1, n2, n3, n4);
-        g.dfsHelper(start);
+        g.dfs(start, n4);
         //bt.traverseInorder(root);
     }
 }
