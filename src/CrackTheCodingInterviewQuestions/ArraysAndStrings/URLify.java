@@ -10,7 +10,7 @@ public class URLify {
         db("String: ", s);
         db("String length: ", s.length());
 
-        db("Final String: ", urlify(s, s.length()));
+        db("\nFinal String: ", urlify(s, s.length()));
     }
 
     static String urlify(String str, int length) {
@@ -23,7 +23,7 @@ public class URLify {
             }
         }
 
-        return Arrays.toString(s);
+        return new String(s);
     }
 
     private static void shiftCharacter(char[] str, int idx) {

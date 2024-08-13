@@ -1,9 +1,6 @@
 package Utilities;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static Helper.Helper.db;
 
@@ -18,23 +15,35 @@ public class Graph<T> {
     }
 
     public boolean dfs(GNode<T> start, GNode<T> search) {
-        boolean ret = false;
-        boolean b = false;
-        for (GNode<T> n : start.adjNodes) {
-            n.isVisited = true;
-            db("\nNode: ", n.data);
-            db("\nVisited: ", n.isVisited);
-            if (search.isVisited) {
-                db("\n n = ", n.data);
-                db("\n search = ", search.data);
-                ret = true;
-                return ret;
-            }
-            else {
-                b = ret ^ dfs(n, search);
+        if(start == null) return false;
+
+        if(start == search) return true;
+
+        start.isVisited = true;
+
+        for (GNode<T> n: start.adjNodes) {
+            if(!n.isVisited) {
+                if(dfs(n, search)) return true;
             }
         }
 
-        return ret ^ b;
+        return false;
+    }
+
+    public void dfsHelper(GNode<T> startNode) {
+        db("StartNode: ", startNode);
+
+        dfs(startNode);
+    }
+
+    private void dfs(GNode<T> startNode) {
+        for(GNode<T> node: startNode.adjNodes) {
+            if(!node.isVisited){
+                node.isVisited = true;
+                db(" Node : ", node);
+                db(" -> ", "");
+                dfs(node);
+            }
+        }
     }
 }

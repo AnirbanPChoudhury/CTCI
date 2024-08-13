@@ -1,24 +1,21 @@
-import Utilities.BinaryTree;
-import Utilities.BinaryTreePrinter;
-import Utilities.TNode;
+import Utilities.*;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws java.lang.Exception {
-        BinaryTree<Integer> bt = new BinaryTree<>();
-        TNode<Integer> root = new TNode<>(20);
+        Graph<Integer> g = new Graph<>();
+        GNode<Integer> start = new GNode<>(21);
+        GNode<Integer> n1 = new GNode<>(43);
+        GNode<Integer> n2 = new GNode<>(51);
+        GNode<Integer> n3 = new GNode<>(5084);
+        GNode<Integer> n4 = new GNode<>(83);
+        start.addAdjNodes(n1, n2);
+        n2.addAdjNodes(n3, n4);
+        n4.addAdjNodes(n3);
 
-        bt.addNode(root, new TNode<>(12));
-        bt.addNode(root, new TNode<>(11));
-        bt.addNode(root, new TNode<>(1));
-        bt.addNode(root, new TNode<>(234));
-        bt.addNode(root, new TNode<>(874));
-//        bt.addNode(root, new TNode<>(98));
-//        bt.addNode(root, new TNode<>(3982));
-
-        BinaryTreePrinter<Integer> btp = new BinaryTreePrinter<>();
-        btp.printTree(root);
+        g.addNodes(start, n1, n2, n3, n4);
+        g.dfsHelper(start);
         //bt.traverseInorder(root);
     }
 }

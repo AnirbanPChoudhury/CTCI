@@ -6,7 +6,7 @@ import java.util.List;
 
 public class GNode<T> {
     T data;
-    boolean isVisited;
+    boolean isVisited = false;
     List<GNode<T>> adjNodes = new ArrayList<>();
 
     public GNode() {
@@ -25,5 +25,10 @@ public class GNode<T> {
     @SafeVarargs
     public final void addAdjNodes(GNode<T>... nodes) {
         adjNodes.addAll(Arrays.asList(nodes));
+    }
+
+    @Override
+    public String toString() {
+        return data.toString();
     }
 }
