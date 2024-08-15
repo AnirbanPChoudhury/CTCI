@@ -8,6 +8,8 @@ public class TNode<T> {
     public TNode<T> left;
     public TNode<T> right;
 
+    boolean isVisited = false;
+
     public TNode() {
         height = 0;
     }
