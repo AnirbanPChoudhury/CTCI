@@ -21,6 +21,8 @@ public class BuildOrder<T> {
         f.addAdjNodes(a);
         d.addAdjNodes(c);
 
-        g.topologicalSort();
+        //g.topologicalSort();
+
+        g.dfsTraverse();
     }
 }

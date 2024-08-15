@@ -9,7 +9,8 @@ public class Graph<T> {
 
     GNode<T> startNode;
 
-    public Graph() {}
+    public Graph() {
+    }
 
     public Graph(GNode<T> node) {
         startNode = node;
@@ -21,7 +22,7 @@ public class Graph<T> {
         Collections.addAll(nodes, node);
     }
 
-    public boolean dfs(GNode<T> start, GNode<T> search) {
+    public boolean dfsRouteHelper(GNode<T> start, GNode<T> search) {
         if (start == null) return false;
 
         if (start == search) return true;
@@ -30,35 +31,23 @@ public class Graph<T> {
 
         for (GNode<T> n : start.adjNodes) {
             if (!n.isVisited) {
-                if (dfs(n, search)) return true;
+                if (dfsRouteHelper(n, search)) return true;
             }
         }
 
         return false;
     }
 
-    public void dfsHelper(GNode<T> startNode) {
-        db("StartNode: ", startNode);
-
-        dfs(startNode);
-    }
-
-    private void dfs(GNode<T> startNode) {
-        for (GNode<T> node : startNode.adjNodes) {
-            if (!node.isVisited) {
-                node.isVisited = true;
-                db(" Node : ", node);
-                db(" -> ", "");
-                dfs(node);
-            }
-        }
-    }
-
     public void topologicalSort() {
 
         LinkedList<GNode<T>> stk = new LinkedList<>();
 
+        db("Set of Nodes: ", nodes);
+        db("\nStart Node: ", startNode);
         for (GNode<T> node : nodes) {
+            db("\nNodes: ", node.data);
+            db("\nIsVisited: ", node.isVisited);
+
             if (!node.isVisited)
                 topologicalSortHelper(node, stk);
         }
@@ -78,5 +67,36 @@ public class Graph<T> {
         stk.traverseList();
 
         stk.insertAtBeginning(node);
+    }
+
+    public void dfsTraverse() {
+
+        LinkedList<GNode<T>> traversalList = new LinkedList<>();
+
+        for (GNode<T> node : nodes) {
+            if (!node.isVisited)
+                dfsHelper(node, traversalList);
+        }
+
+        db("\nDFS Traversal List: ", "");
+        traversalList.traverseList();
+    }
+
+    private void dfsHelper(GNode<T> node, LinkedList<GNode<T>> list) {
+        node.isVisited = true;
+
+        db("Node: ", node.data);
+
+        //Pre Order DFS
+        list.insertAtEnd(node);
+
+        for (GNode<T> adjNode : node.adjNodes) {
+            if (!adjNode.isVisited) {
+                dfsHelper(adjNode, list);
+            }
+        }
+
+        //Post Order DFS
+        //list.insertAtBeginning(node);
     }
 }

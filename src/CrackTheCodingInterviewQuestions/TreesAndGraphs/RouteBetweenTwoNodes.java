@@ -22,6 +22,6 @@ public class RouteBetweenTwoNodes {
 
         g.addNodes(n1, n2, n3, n4, n5, n6);
         //g.dfs(n1, n6);
-        db("\nPath Exists: ", g.dfs(n1, n5));
+        db("\nPath Exists: ", g.dfsRouteHelper(n1, n5));
     }
 }

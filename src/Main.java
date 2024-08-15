@@ -1,7 +1,5 @@
 import Utilities.*;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) throws java.lang.Exception {
         Graph<Integer> g = new Graph<>();
@@ -15,7 +13,7 @@ public class Main {
         n4.addAdjNodes(n3);
 
         g.addNodes(start, n1, n2, n3, n4);
-        g.dfs(start, n4);
+        g.dfsRouteHelper(start, n4);
         //bt.traverseInorder(root);
     }
 }
